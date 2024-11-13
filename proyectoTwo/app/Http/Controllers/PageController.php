@@ -24,6 +24,7 @@ class PageController extends Controller
         return view('blog', ['posts' => $posts]); 
     }
 
+    //estudiar este metodo que contiene inyeccion de dependencia
     public function post(Post $post)
     {
         
