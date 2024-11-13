@@ -14,6 +14,9 @@ return new class extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
 
+            $table->unsignedBigInteger('user_id'); // Es un campo sin signos y para hacer una relacion
+            $table->foreign('user_id')->references('id')->on('users');// esta es la relacion con users
+            
             $table->String('title');
             $table->String('slug')->unique();
             $table->text('body');

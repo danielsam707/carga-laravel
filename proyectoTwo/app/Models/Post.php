@@ -9,4 +9,11 @@ class Post extends Model
 {
     /** @use HasFactory<\Database\Factories\PostFactory> */
     use HasFactory;
+
+    // es una relacion con la tabla users
+    // Y lo escribo asi porque una publicacion pertenece a un unico usuario.
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
