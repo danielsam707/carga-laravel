@@ -14,4 +14,11 @@ class PostController extends Controller
             'posts' => Post::latest()->paginate()
         ]);
     }
+
+    //Metodo de eliminacion.
+    public function destroy(Post $post)
+    {
+        $post->delete();
+        return back();
+    }
 }
