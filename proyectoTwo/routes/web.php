@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request; // Es para manejar solicitudes o peticiones de usuario
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\PostController;
 
 
 
@@ -27,6 +28,8 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+Route::resource('posts', PostController::class)->except(['show']);
+// trabaja con todas las rutas excepto con la de show
 require __DIR__.'/auth.php';
 
 
