@@ -14,6 +14,11 @@ class Post extends Model
         'body',
     ];
 
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
+
     /** @use HasFactory<\Database\Factories\PostFactory> */
     use HasFactory;
 
