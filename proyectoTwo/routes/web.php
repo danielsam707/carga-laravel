@@ -17,9 +17,7 @@ Route::controller(PageController::class)->group(function()
 });
 
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::redirect('dashboard', 'posts')->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -27,7 +25,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::resource('posts', PostController::class)->except(['show']);
+Route::resource('posts', PostController::class)->except(['show'])->middleware(['auth']);
 // trabaja con todas las rutas excepto con la de show
 require __DIR__.'/auth.php';
 
